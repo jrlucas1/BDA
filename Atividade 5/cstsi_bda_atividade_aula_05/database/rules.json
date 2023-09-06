@@ -1,0 +1,17 @@
+{
+  "rules": {
+    ".read": true,
+    // ".write": true,
+    "produtos": {
+      ".indexOn": ["nome", "preco", "descricao"],
+        ".read": true,
+          ".write": "root.hasChild('users' + auth.uid)"
+    },
+    "users":{ 
+      "$uid":{
+        ".read": "$uid===auth.uid",
+        ".write": "$uid===auth.uid"
+      }
+    }
+  }
+}
